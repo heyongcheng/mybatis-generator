@@ -7,35 +7,37 @@
     <properties resource="generator.properties"/>
     <!--数据库驱动-->
     <context id="DB2Tables" targetRuntime="MyBatis3">
-        <commentGenerator>
+        <commentGenerator type="cn.he.tools.mybatis.CleanCommentGenerator">
+            <property name="suppressAllComments" value="false"/>
             <property name="suppressDate" value="true"/>
-            <property name="suppressAllComments" value="true"/>
+            <property name="addRemarkComments" value="true"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
         <jdbcConnection driverClass="${jdbc_driver}" 
     				connectionURL="${jdbc_url}" 
     				userId="${jdbc_user}" 
     				password="${jdbc_password}">
+            <property name="useInformationSchema" value="true"/>
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.test.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="${package_prefix}.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成XML映射文件存放位置-->
-        <sqlMapGenerator targetPackage="com.test.mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="${package_prefix}.mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${package_prefix}.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="channel_product"
-        		domainObjectName="ChannelProduct"
+        <table tableName="payment_trade"
+        		domainObjectName="PaymentTrade"
         		enableCountByExample="false" 
         		enableUpdateByExample="false" 
         		enableDeleteByExample="false" 
