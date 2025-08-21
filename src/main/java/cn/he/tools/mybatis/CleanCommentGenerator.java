@@ -128,14 +128,7 @@ public class CleanCommentGenerator extends DefaultCommentGenerator {
     }
 
     public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
-        if (!this.suppressAllComments) {
-            StringBuilder sb = new StringBuilder();
-            method.addJavaDocLine("/**");
-            sb.append(" * ").append(introspectedTable.getFullyQualifiedTable());
-            method.addJavaDocLine(sb.toString());
-            this.addJavadocTag(method, false);
-            method.addJavaDocLine(" */");
-        }
+
     }
 
     public void addGetterComment(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
