@@ -131,7 +131,7 @@ public class CleanCommentGenerator extends DefaultCommentGenerator {
         if (!this.suppressAllComments) {
             StringBuilder sb = new StringBuilder();
             method.addJavaDocLine("/**");
-            sb.append(introspectedTable.getFullyQualifiedTable());
+            sb.append(" * ").append(introspectedTable.getFullyQualifiedTable());
             method.addJavaDocLine(sb.toString());
             this.addJavadocTag(method, false);
             method.addJavaDocLine(" */");
